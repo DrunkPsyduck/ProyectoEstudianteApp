@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProyectoEstudianteApp.Views.InsertarTarea"
+             xmlns:local="clr-namespace:ProyectoEstudianteApp"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=TareaViewModel}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Añadir nueva tarea:" 
+                   TextColor="Black"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Nombre Tarea:"
+                   TextColor="Black"/>
+            <Entry Placeholder="Nombre de la Tarea"
+                   Text="{Binding Tarea.NombreTarea}"/>
+            <Label Text="Due Date" TextColor="Black"/>
+            <Entry Placeholder="Due date" Text="{Binding Tarea.DueDate}"/>
+            <Button Text="Insertar Tarea" TextColor="Black" 
+                    Command="{Binding InsertarTarea}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

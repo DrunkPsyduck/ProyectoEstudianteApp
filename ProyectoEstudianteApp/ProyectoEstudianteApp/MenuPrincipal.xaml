@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProyectoEstudianteApp.MenuPrincipal"
+             xmlns:customcontrols="clr-namespace:ProyectoEstudianteApp.CustomControls">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu Xamarin" BackgroundColor="PaleGoldenrod">
+            <StackLayout Orientation="Vertical">
+                <StackLayout BackgroundColor="#FADBD8"
+                             HeightRequest="75">
+                    <Label FontSize="30"
+                           Text="EstudianteApp"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Center"
+                           TextColor="White"
+                           BackgroundColor="#FADBD8"/>
+                </StackLayout>
+                <ListView x:Name="lisviewMenu"
+                          RowHeight="60"
+                          SeparatorVisibility="Default"
+                          BackgroundColor="#FADBD8">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="20">
+                                    <Label Text="{Binding Titulo}"
+                                           TextColor="White"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="CenterAndExpand"
+                                           FontSize="Medium"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

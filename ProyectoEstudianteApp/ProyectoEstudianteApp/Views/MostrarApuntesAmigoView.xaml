@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:ProyectoEstudianteApp"
+             xmlns:viewmodels="clr-namespace:ProyectoEstudianteApp.ViewModels"
+             x:Class="ProyectoEstudianteApp.Views.MostrarApuntesAmigoView">
+    <ContentPage.Content>
+        <StackLayout x:Name="stackapuntesamigo"
+                     BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+            Path=ApuntesAmigoViewModel}">
+            <Label Text="Apuntes Amigos"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ScrollView Orientation="Vertical">
+                <ListView ItemsSource="{Binding ArchivosAmigos}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding NombreArchivo}"/>
+                                    <Button Text="Visualizar"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

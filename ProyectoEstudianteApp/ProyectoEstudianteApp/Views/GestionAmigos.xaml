@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewmodels="clr-namespace:ProyectoEstudianteApp.ViewModels"
+             xmlns:local="clr-namespace:ProyectoEstudianteApp"
+             x:Class="ProyectoEstudianteApp.Views.GestionAmigos">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Amigos">
+        <ContentPage.Content>
+            <StackLayout BackgroundColor="Beige"
+                     BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+            Path=AmigosViewModel}"
+                     x:Name="stackusuarios">
+                <Button Text="añadir amig@"
+                    HorizontalOptions="FillAndExpand"
+                    x:Name="btnAñadirAmigo"
+                    BackgroundColor="White"
+                    BorderColor="Black"
+                    BorderWidth="2"
+                     />
+                <ScrollView Orientation="Vertical">
+                    <ListView ItemsSource="{Binding Amigos}" BackgroundColor="#FADBD8">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label TextColor="Black" Text="{Binding UsernameAmigo, StringFormat='Apuntes de: {0}'}"/>
+                                        <Button TextColor="Black" 
+                                               x:Name="btnApuntesAmigo"
+                                                Text="Ver sus apuntes"
+                                                BorderColor="Black"
+                                                BackgroundColor="White"
+                                                BorderWidth="2"
+                                                Clicked="btnApuntesAmigo_Clicked"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Solicitudes">
+        <ContentPage.Content>
+            <StackLayout BackgroundColor="Beige"
+                     x:Name="stackmensajes"
+                     BindingContext="{Binding Source={x:Static local:App.ServiceLocator},
+            Path=MensajesViewModel}">
+                <ScrollView Orientation="Vertical">
+                    <ListView ItemsSource="{Binding Mensajes}" RowHeight="120" BackgroundColor="#FADBD8">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding UsernameFrom, StringFormat='Solicitud de amistad de: {0}'}"
+                                               HorizontalTextAlignment="Center"
+                                               FontSize="Large"
+                                               TextColor="Black"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Button HorizontalOptions="CenterAndExpand" Text="Ver Mensaje" 
+                                                BackgroundColor="White"
+                                                    BorderColor="Black"
+                                                    BorderWidth="2"
+                                                CommandParameter="{Binding .}"
+                                                Command="{Binding BindingContext.DetallesMensaje, 
+                                            Source={x:Reference stackmensajes}}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>
